@@ -16,7 +16,7 @@ class Main extends PluginBase{
 
 		$this->getServer()->getPluginManager()->registerInterface(new AllPharPluginLoader($classLoader));
 
-		$this->getServer()->getPluginManager()->registerInterface(new AllScriptPluginLoader($classLoader));
+		$this->getServer()->getPluginManager()->registerInterface(new AllScriptPluginLoader());
 
 		if($this->getServer()->getPluginManager()->getPlugin("DevTools") instanceof Plugin or $this->getServer()->getPluginManager()->getPlugin("FolderPluginLoader") instanceof Plugin){
 			$this->getServer()->getPluginManager()->registerInterface(new AllFolderPluginLoader($classLoader));
