@@ -44,7 +44,10 @@ class AllScriptPluginLoader extends ScriptPluginLoader{
 		if($insideHeader){
 			$server = Server::getInstance();
 			$description = new PluginDescription($data);
-			if(!$server->getPluginManager()->getPlugin($description->getName()) instanceof Plugin and !in_array($server->getApiVersion(), $description->getCompatibleApis())){
+			if($server->getPluginManager()->getPlugin($description->getName()) instanceof Plugin){
+				//Not load when a plugin with the same name is already loaded
+				return null;
+			}elseif(!in_array($server->getApiVersion(), $description->getCompatibleApis())){
 				try{
 					$api = (new \ReflectionClass(PluginDescription::class))->getProperty("api");
 					$api->setAccessible(true);
@@ -53,6 +56,7 @@ class AllScriptPluginLoader extends ScriptPluginLoader{
 				}catch(\ReflectionException $e){
 				}
 			}
+			return $description;
 		}
 
 		return null;

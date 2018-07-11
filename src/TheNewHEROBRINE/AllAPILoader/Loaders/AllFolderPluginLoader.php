@@ -22,7 +22,10 @@ class AllFolderPluginLoader extends FolderPluginLoader{
 			if($yaml != ""){
 				$server = Server::getInstance();
 				$description = new PluginDescription($yaml);
-				if(!$server->getPluginManager()->getPlugin($description->getName()) instanceof Plugin and !in_array($server->getApiVersion(), $description->getCompatibleApis())){
+				if($server->getPluginManager()->getPlugin($description->getName()) instanceof Plugin){
+					//Not load when a plugin with the same name is already loaded
+					return null;
+				}elseif(!in_array($server->getApiVersion(), $description->getCompatibleApis())){
 					try{
 						$api = (new \ReflectionClass(PluginDescription::class))->getProperty("api");
 						$api->setAccessible(true);
