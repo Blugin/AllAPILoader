@@ -3,11 +3,12 @@
 namespace TheNewHEROBRINE\AllAPILoader;
 
 use FolderPluginLoader\FolderPluginLoader;
-use pocketmine\plugin\PluginBase;
-use pocketmine\plugin\PluginLoadOrder;
-use TheNewHEROBRINE\AllAPILoader\Loaders\AllFolderPluginLoader;
-use TheNewHEROBRINE\AllAPILoader\Loaders\AllPharPluginLoader;
-use TheNewHEROBRINE\AllAPILoader\Loaders\AllScriptPluginLoader;
+use pocketmine\plugin\{
+	PluginBase, PluginLoadOrder
+};
+use TheNewHEROBRINE\AllAPILoader\Loaders\{
+	AllFolderPluginLoader, AllPharPluginLoader, AllScriptPluginLoader
+};
 
 class Main extends PluginBase{
 

@@ -2,9 +2,9 @@
 
 namespace TheNewHEROBRINE\AllAPILoader\Loaders;
 
-use pocketmine\plugin\Plugin;
-use pocketmine\plugin\PluginDescription;
-use pocketmine\plugin\ScriptPluginLoader;
+use pocketmine\plugin\{
+	Plugin, PluginDescription, ScriptPluginLoader
+};
 use pocketmine\Server;
 
 class AllScriptPluginLoader extends ScriptPluginLoader{

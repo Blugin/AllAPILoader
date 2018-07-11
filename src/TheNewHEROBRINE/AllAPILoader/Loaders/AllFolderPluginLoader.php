@@ -3,8 +3,9 @@
 namespace TheNewHEROBRINE\AllAPILoader\Loaders;
 
 use FolderPluginLoader\FolderPluginLoader;
-use pocketmine\plugin\Plugin;
-use pocketmine\plugin\PluginDescription;
+use pocketmine\plugin\{
+	Plugin, PluginDescription
+};
 use pocketmine\Server;
 
 class AllFolderPluginLoader extends FolderPluginLoader{

@@ -2,9 +2,9 @@
 
 namespace TheNewHEROBRINE\AllAPILoader\Loaders;
 
-use pocketmine\plugin\PharPluginLoader;
-use pocketmine\plugin\Plugin;
-use pocketmine\plugin\PluginDescription;
+use pocketmine\plugin\{
+	PharPluginLoader, Plugin, PluginDescription
+};
 use pocketmine\Server;
 
 class AllPharPluginLoader extends PharPluginLoader{
