@@ -23,10 +23,13 @@ class AllFolderPluginLoader extends FolderPluginLoader{
 				$server = Server::getInstance();
 				$description = new PluginDescription($yaml);
 				if(!$server->getPluginManager()->getPlugin($description->getName()) instanceof Plugin and !in_array($server->getApiVersion(), $description->getCompatibleApis())){
-					$api = (new \ReflectionClass("pocketmine\plugin\PluginDescription"))->getProperty("api");
-					$api->setAccessible(true);
-					$api->setValue($description, [$server->getApiVersion()]);
-					return $description;
+					try{
+						$api = (new \ReflectionClass("pocketmine\plugin\PluginDescription"))->getProperty("api");
+						$api->setAccessible(true);
+						$api->setValue($description, [$server->getApiVersion()]);
+						return $description;
+					}catch(\ReflectionException $e){
+					}
 				}
 				return $description;
 			}
