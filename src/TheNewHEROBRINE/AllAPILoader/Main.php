@@ -2,7 +2,7 @@
 
 namespace TheNewHEROBRINE\AllAPILoader;
 
-use pocketmine\plugin\Plugin;
+use FolderPluginLoader\FolderPluginLoader;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginLoadOrder;
 use TheNewHEROBRINE\AllAPILoader\Loaders\AllFolderPluginLoader;
@@ -18,7 +18,7 @@ class Main extends PluginBase{
 
 		$this->getServer()->getPluginManager()->registerInterface(new AllScriptPluginLoader());
 
-		if($this->getServer()->getPluginManager()->getPlugin("DevTools") instanceof Plugin or $this->getServer()->getPluginManager()->getPlugin("FolderPluginLoader") instanceof Plugin){
+		if(class_exists(FolderPluginLoader::class)){
 			$this->getServer()->getPluginManager()->registerInterface(new AllFolderPluginLoader($classLoader));
 		}
 
