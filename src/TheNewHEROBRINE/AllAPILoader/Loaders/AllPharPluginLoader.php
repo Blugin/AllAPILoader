@@ -24,7 +24,7 @@ class AllPharPluginLoader extends PharPluginLoader{
 				$description = new PluginDescription($pluginYml->getContent());
 				if(!$server->getPluginManager()->getPlugin($description->getName()) instanceof Plugin and !in_array($server->getApiVersion(), $description->getCompatibleApis())){
 					try{
-						$api = (new \ReflectionClass("pocketmine\plugin\PluginDescription"))->getProperty("api");
+						$api = (new \ReflectionClass(PluginDescription::class))->getProperty("api");
 						$api->setAccessible(true);
 						$api->setValue($description, [$server->getApiVersion()]);
 						return $description;
